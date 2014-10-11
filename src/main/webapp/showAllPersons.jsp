@@ -12,9 +12,16 @@
 <jsp:useBean id="storage" class="com.example.servletjspdemo.service.StorageService" scope="application" />
 <%
   for (Person person : storage.getAllPersons()) {
-	  out.println("<p>First name: " + person.getFirstName() + "; Year of birth: " + person.getYob() + "</p>");
+	  out.println(personToHtml(person));
   }
 %>
+<%!
+	private String personToHtml(Person person)
+	{
+	return "<p>First name: " + person.getFirstName() + "; Year of birth: " + person.getYob() + "</p>";
+	}
+%>
+
 <p>
   <a href="getPersonData.jsp">Add another person</a>
 </p>
